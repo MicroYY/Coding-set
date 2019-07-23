@@ -339,6 +339,8 @@ int main()
 }
 */
 
+
+
 /*
 #include <string>
 #include <vector>
@@ -422,6 +424,8 @@ int main()
 }
 */
 
+
+/*
 #include <iostream>
 #include <string>
 
@@ -468,4 +472,286 @@ int main()
 	if (v12 < v22)
 		return -1;
 	return 0;
+}
+
+*/
+
+
+/*
+#include <string>
+
+int main()
+{
+	std::string s = "12345";
+	auto i = s.find('5');
+	i = s.find('6',i);
+	system("pause");
+
+
+}
+*/
+
+//小米食堂每年都会举办一次厨艺大赛，假设参赛的厨师一共有n位（n < 1000），比赛结束后没有公布评分，
+//但是站在领奖台上的一排厨师中每位厨师都能看到与自己相邻的厨师（左或者右）里评分比自己低（看不到比自己分数高的人的分数）的评分。
+//比赛结束之后要发奖金，以1K为单位，每位厨师至少会发1K的奖金，另外，如果一个厨师发现自己的奖金没有高于比自己评分低的厨师的奖金，
+//就会不满意，作为比赛组织方，小米食堂至少需要发放多少奖金才能让所有厨师满意。
+
+/*
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+int main()
+{
+	std::string input;
+	std::vector<int> score;
+	int num = 0;
+	std::cin >> num;
+	if (num == 0)
+	{
+		std::cout << "0";
+	}
+	std::vector<int> salary(num, 1);
+	while (num--)
+	{
+		int singleScore;
+		std::cin >> singleScore;
+		score.push_back(singleScore);
+	}
+
+	//std::sort(score.begin(), score.end());
+
+	for (size_t i = 1; i < score.size(); i++)
+	{
+		if (score[i] < score[i - 1] && salary[i] >= salary[i - 1])
+		{
+			salary[i - 1] = salary[i] + 1;
+			i = 1;
+		}
+		if (score[i] > score[i - 1] && salary[i] <= salary[i - 1])
+		{
+			salary[i] = salary[i - 1] + 1;
+			i = 1;
+		}
+
+	}
+	int sum = 0;
+	for (size_t i = 0; i < salary.size(); i++)
+	{
+		sum += salary[i];
+	}
+	std::cout << sum;
+
+	system("pasue");
+}
+
+*/
+
+/*
+#include <string>
+#include <vector>
+#include <iostream>
+
+
+int main()
+{
+	std::vector<int> nums(4);
+	int target;
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> nums[i];
+	}
+	std::cin >> target;
+
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (i == j)
+			{
+				continue;
+			}
+			for (size_t m = 0; m < 4; m++)
+			{
+				if (m == i || m == j)
+				{
+					continue;
+				}
+
+				for (size_t n = 0; n < 4; n++)
+				{
+					if (n == m || n == j || n == i)
+					{
+						continue;
+					}
+					//std::cout << i << j << m << n << std::endl;
+					if (nums[i] + nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+
+					if (nums[i] + nums[j] + nums[m] * nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] * nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] * nums[m] * nums[n] == target)
+						std::cout << "1";
+					if (nums[i] * nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] * nums[j] + nums[m] * nums[n] == target)
+						std::cout << "1";
+					if (nums[i] * nums[j] * nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] * nums[j] * nums[m] * nums[n] == target)
+						std::cout << "1";
+
+
+					if (nums[i] + nums[j] + nums[m] / nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] / nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] / nums[m] / nums[n] == target)
+						std::cout << "1";
+					if (nums[i] / nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] / nums[j] + nums[m] / nums[n] == target)
+						std::cout << "1";
+					if (nums[i] / nums[j] / nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] / nums[j] / nums[m] / nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+
+					if (nums[i] + nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+
+					if (nums[i] + nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+
+					if (nums[i] + nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+
+					if (nums[i] + nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+
+					if (nums[i] + nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+
+					if (nums[i] + nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] + nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] + nums[m] - nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] + nums[n] == target)
+						std::cout << "1";
+					if (nums[i] - nums[j] - nums[m] - nums[n] == target)
+						std::cout << "1";
+				}
+			}
+		}
+	}
+	std::cout << "0";
+	system("pause");
+}
+*/
+#include <stdio.h>
+
+int main()
+{
+
+	char ch = -1;
+	printf("% 02x, % 02x", ch, (unsigned char)ch);
+	getchar();
 }
