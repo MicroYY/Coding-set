@@ -746,12 +746,107 @@ int main()
 	system("pause");
 }
 */
+
+/*
 #include <stdio.h>
+
+int test()
+{
+	int k = 0;
+	char c = 'A';
+	do {
+		switch (c++)
+		{
+		case 'A': k++; break;
+		case 'B': k--;
+		case 'C': k += 2; break;
+		case 'D': k = k % 2; break;
+		case 'E': k = k * 10; break;
+		default: k = k / 3;
+		}
+		k++;
+	} while (c < 'G');
+	return k;
+}
 
 int main()
 {
-
+	auto i = test();
 	char ch = -1;
 	printf("% 02x, % 02x", ch, (unsigned char)ch);
 	getchar();
+}
+*/
+
+
+
+
+/*
+#include<iostream>
+using namespace std;
+int nest(int i)
+{
+	if (i < 0)
+		return 0;
+	else if (i == 0)
+		return 1;
+	else
+		return nest(i - 1) + nest(i - 2) + i;
+}
+int main()
+{
+	for (int i = -1; i <= 7; i++)
+	{
+		cout << nest(i) << endl;
+	}
+	return 1;
+}
+*/
+
+
+
+/*
+class B
+{
+public:
+	virtual void Fun() {}
+};
+class D : public B
+{
+public:
+	void Fun() {}
+};
+int main()
+{
+	D dd;
+	B* pb = &dd;
+	D* pd = &dd;
+	pb->Fun();
+	pd->Fun();
+}
+*/
+
+/*
+#include <stdio.h>
+int main(void)
+{
+	enum team { my, your = 9, his, her = his + 3 };
+	printf("%d %d %d %d\n", my, your, his, her);
+	return 0;
+}
+*/
+
+#include <string>
+int main()
+{
+	std::string str1("trend");
+	std::string str2("micro");
+	std::string& strs = str1;
+	std::string* ptrs = &str1;
+	strs = str2;
+	ptrs = &str2;
+	int a = 0;
+	int b = (a = -1) ? 2 : 3;
+	int c = (a = 0) ? 2 : 3;
+	return 0;
 }
