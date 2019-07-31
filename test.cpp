@@ -836,6 +836,7 @@ int main(void)
 }
 */
 
+#include <vector>
 #include <string>
 int main()
 {
@@ -848,5 +849,9 @@ int main()
 	int a = 0;
 	int b = (a = -1) ? 2 : 3;
 	int c = (a = 0) ? 2 : 3;
+
+	std::vector<int> v;
+	v.push_back(NULL);
+
 	return 0;
 }
