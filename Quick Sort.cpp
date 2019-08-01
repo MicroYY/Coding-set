@@ -4,7 +4,7 @@
 int Partition(std::vector<int>&v, int start, int end)
 {
 	int pivot = v[end];
-	// i记录最左边的大于pivot的数
+	
 	int i = start;
 	for (size_t j = start; j < end; j++)
 	{

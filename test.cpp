@@ -838,8 +838,13 @@ int main(void)
 
 #include <vector>
 #include <string>
+#include <iostream>
 int main()
 {
+	for (int i = 0; i < -1; i++)
+	{
+		std::cout << "123";
+	}
 	std::string str1("trend");
 	std::string str2("micro");
 	std::string& strs = str1;
