@@ -17,20 +17,25 @@ int Partition(std::vector<int>&v, int start, int end)
 	return i;
 }
 
-void QuickSort(std::vector<int>& v, int start, int end)
+void QSort(std::vector<int>& v, int start, int end)
 {
 	if (start < end)
 	{
 		int pivotIndex = Partition(v, start, end);
-		QuickSort(v, start, pivotIndex - 1);
-		QuickSort(v, pivotIndex + 1, end);
+		QSort(v, start, pivotIndex - 1);
+		QSort(v, pivotIndex + 1, end);
 	}
+}
+
+void QuickSort(std::vector<int>& v)
+{
+	QSort(v, 0, v.size() - 1);
 }
 
 
 int main()
 {
 	std::vector<int> v = { 9,8,7,6,5,4,3,2,1,0};
-	QuickSort(v, 0, v.size() - 1);
+	QuickSort(v);
 	return 0;
 }
