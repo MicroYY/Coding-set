@@ -836,6 +836,7 @@ int main(void)
 }
 */
 
+/*
 #include <vector>
 #include <string>
 #include <iostream>
@@ -858,5 +859,13 @@ int main()
 	std::vector<int> v;
 	v.push_back(NULL);
 
+	return 0;
+}
+*/
+
+int main()
+{
+	int a = 5, b = 6, c = 7, d = 8, m = 2, n = 2;
+	auto x = (m = a > b) && (n = c > d);
 	return 0;
 }

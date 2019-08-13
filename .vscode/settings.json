@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.tex": "latex",
+        "algorithm": "cpp",
+        "limits": "cpp"
+    }
+}
