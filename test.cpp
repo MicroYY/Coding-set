@@ -909,7 +909,7 @@ int rob(vector<int>& nums) {
 			max = std::max(max, dp[j]);
 		}
 		dp[i] = nums[i] + max;
-		dp[i] = std::max(dp[i], dp[i - 1]);
+		//dp[i] = std::max(dp[i], dp[i - 1]);
 	}
 
 	int res = dp[0];
