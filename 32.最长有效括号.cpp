@@ -47,6 +47,9 @@ public:
             else {
                 for(int j = i - 1; j >= 0; j--) {
                     if(dp[j + 1] == 0) {
+                        if (s[j] != '(') {
+						    break;
+					    }
                         dp[j + 1] = 1;
                         dp[i + 1] = 1;
                         break;
