@@ -6,6 +6,9 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
+<<<<<<< HEAD
+        
+=======
         /*
         int n = nums.size();
         if(n == 0) {
@@ -67,6 +70,7 @@ public:
            dp2[i] = max(dp2[i - 1], dp2[i - 2] + nums[i - 1]);
        }
        return max(dp1[n], dp2[n]);
+>>>>>>> 5e89e4ba23e61ea99d182060df01222376615d15
     }
 };
 

@@ -6,6 +6,7 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
+<<<<<<< HEAD
         int n = prices.size();
         if(n == 0 || n == 1) {
             return 0;
@@ -28,6 +29,9 @@ public:
             }
         }
         return res;
+=======
+        
+>>>>>>> 309255b7738641946d920dcff2550a4f8a616335
     }
 };
 

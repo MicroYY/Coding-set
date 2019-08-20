@@ -863,72 +863,158 @@ int main()
 }
 */
 
-<<<<<<< HEAD
+/*
 int main()
 {
 	int a = 5, b = 6, c = 7, d = 8, m = 2, n = 2;
 	auto x = (m = a > b) && (n = c > d);
-=======
-/*
-#include <iostream>
+	====== =
+		/*
+		#include <iostream>
+		#include <vector>
+
+		int main()
+		{
+			int n;
+			std::cin >> n;
+			//int nums[n][n];
+			std::vector<int> nums;
+			for (int i = 0; i < n; i++)
+			{
+				int num;
+				std::cin >> num;
+				nums.push_back(num);
+			}
+
+			for (int i = 0; i < n; i++)
+			{
+				std::cout << n + 1 - nums[i] << " ";
+			}
+		}
+		*/
+
+
+		/*
+		#include <vector>
+		#include <algorithm>
+		using namespace std;
+		int rob(vector<int>& nums) {
+			int n = nums.size();
+			if (n == 0) {
+				return 0;
+			}
+			vector<int> dp = nums;
+			for (int i = 1; i < nums.size(); i++) {
+				int max;
+				if (i == 1) {
+					max = 0;
+				}
+				else {
+					max = dp[0];
+				}
+				for (int j = 1; j <= i - 2; j++) {
+					max = std::max(max, dp[j]);
+				}
+				dp[i] = nums[i] + max;
+				//dp[i] = std::max(dp[i], dp[i - 1]);
+			}
+
+			int res = dp[0];
+			for (int i = 1; i < dp.size(); i++) {
+				res = std::max(res, dp[i]);
+			}
+			return res;
+		}
+
+		int main()
+		{
+			vector<int> v = { 2,7,9,3,1 };
+			int res = rob(v);
+		>>>>>>> refs/remotes/origin/master
+			return 0;
+		}
+		*/
+
+
 #include <vector>
-
-int main()
-{
-	int n;
-	std::cin >> n;
-	//int nums[n][n];
-	std::vector<int> nums;
-	for (int i = 0; i < n; i++)
-	{
-		int num;
-		std::cin >> num;
-		nums.push_back(num);
-	}
-
-	for (int i = 0; i < n; i++)
-	{
-		std::cout << n + 1 - nums[i] << " ";
-	}
-}
-*/
-
-
-#include <vector>
+#include <string>
 #include <algorithm>
 using namespace std;
-int rob(vector<int>& nums) {
-	int n = nums.size();
-	if (n == 0) {
+
+int longestValidParentheses(string s) {
+	/*
+	int n = s.length();
+	if(n <= 1) {
 		return 0;
 	}
-	vector<int> dp = nums;
-	for (int i = 1; i < nums.size(); i++) {
-		int max;
-		if (i == 1) {
-			max = 0;
+
+	vector<int> dp(n + 1, 0);
+	for(int i = 0; i < n - 1; i++) {
+		if(s[i] == '(') {
+			if(s[i + 1] == ')') {
+				dp[i + 1] = dp[i] + 2;
+				dp[i + 2] = dp[i] + 2;
+				i++;
+			}
+			else {
+				dp[i + 1] = 0;
+			}
 		}
 		else {
-			max = dp[0];
+			dp[i + 1] = 0;
 		}
-		for (int j = 1; j <= i - 2; j++) {
-			max = std::max(max, dp[j]);
+	}
+	int ret = dp[0];
+	for(int i = 1; i < dp.size(); i++) {
+		ret = max(ret, dp[i]);
+	}
+	return ret;
+	*/
+
+	int n = s.length();
+	if (n <= 1) {
+		return 0;
+	}
+	vector<int> dp(n + 1, 0);
+	for (int i = 1; i < n; i++) {
+		if (s[i] == '(') {
+			dp[i + 1] = 0;
 		}
-		dp[i] = nums[i] + max;
-		dp[i] = std::max(dp[i], dp[i - 1]);
+		else {
+			for (int j = i - 1; j >= 0; j--) {
+				if (dp[j + 1] == 0) {
+					if (s[j] != '(') {
+						break;
+					}
+					dp[j + 1] = 1;
+					dp[i + 1] = 1;
+					break;
+				}
+				else {
+					
+				}
+			}
+		}
 	}
 
-	int res = dp[0];
-	for (int i = 1; i < dp.size(); i++) {
-		res = std::max(res, dp[i]);
+	int ret = 0;
+	int tmp = 0;
+	for (int i = 0; i < dp.size(); i++) {
+		if (dp[i] == 1) {
+			tmp++;
+			ret = max(ret, tmp);
+		}
+		else {
+			//ret = max(ret, tmp);
+			tmp = 0;
+		}
 	}
-	return res;
+	return ret;
 }
 
 int main()
 {
-	vector<int> v = { 2,7,9,3,1 };
-	int res = rob(v);
->>>>>>> refs/remotes/origin/master
+	string s(")()())");
+	auto i = longestValidParentheses(s);
 	return 0;
 }
