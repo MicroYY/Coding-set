@@ -29,42 +29,30 @@ class Solution {
 public:
     int maximalRectangle(vector<vector<char>>& matrix) {
         int row = matrix.size();
-        int col = matrix[0].size();
-        if(row == 0 || col == 0) {
+        if(row == 0)
+        {
             return 0;
         }
+        int col = matrix[0].size();
+
+        vector<vector<int>> dp(row, vector<int>(col, 0));
         int max = 0;
-        for(int i = 1; i < col; i++) {
-            if(vector[0][i] == 0) {
-                continue;
-            }
-            else {
-                vector[0][i] += vector[0][i - 1];
-                if(vector[0][i] > max) {
-                    max = vector[0][i];
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(matrix[i][j] == '1'){
+                    dp[i][j] = j == 0 ? 1 : dp[i][j - 1] + 1;
+
+                    int width = dp[i][j];
+
+                    for(int k = i; k >= 0; k--){
+                        width = min(width, dp[k][j]);
+                        max = std::max(max, width * (i - k + 1));
+                    }
+
                 }
             }
         }
-        for(int i = 1; i < row; i++) {
-            if(vector[i][0] == 0) {
-                continue;
-            }
-            else {
-                vector[i][0] += vector[i - 1][0];
-                if(vector[i][0] > max) {
-                    max = vector[i][0];
-                }
-            }
-        }
-        for(int i = 1; i < row; i++) {
-            for(int j = 1; j < col; j++) {
-                if(vector[i][j] == 0 ) {
-                    continue;
-                }
-                int m = i, n = j;
-                
-            }
-        }
+        return max;
     }
 };
 
