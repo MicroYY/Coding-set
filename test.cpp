@@ -936,6 +936,8 @@ int main()
 		*/
 
 
+/*
+
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -969,7 +971,7 @@ int longestValidParentheses(string s) {
 		ret = max(ret, dp[i]);
 	}
 	return ret;
-	*/
+	
 
 	int n = s.length();
 	if (n <= 1) {
@@ -1016,5 +1018,85 @@ int main()
 {
 	string s(")()())");
 	auto i = longestValidParentheses(s);
+	return 0;
+}
+*/
+
+
+/*
+#include <iostream>
+
+using namespace std;
+
+class A
+{
+public:
+	virtual void fun()
+	{
+		cout << "A::fun()" << endl;
+	}
+	virtual ~A()
+	{
+		cout << "~A" << endl;
+	}
+
+};
+
+class B :public A
+{
+public:
+	void fun()
+	{
+		cout << "B:Fun()" << endl;
+	}
+	~B()
+	{
+		cout << "~B" << endl;
+	}
+};
+
+void main()
+{
+	A* a = new B;
+	a->fun();
+	delete a;
+	return ;
+}*/
+
+
+#include <iostream>
+using namespace std;
+
+class P
+{
+public:
+	P()
+	{}
+	static int c;
+};
+
+int sum()
+{
+	int sum = 0;
+	int* const point1 = &sum;
+	for (size_t i = 0; i < 10; i++)
+	{
+		sum += i;
+	}
+	return *point1;
+}
+
+int P::c = 0;
+int main()
+{
+	auto ret = sum();
+
+	int i = 1;
+	for (i; i < 10; i++) {}
+	int sum;
+	int* const point1 = &sum;
+	//point1 = &sum;
+	int *count = &P::c;
+	std::cout << *count << endl;
 	return 0;
 }
