@@ -1064,6 +1064,7 @@ void main()
 }*/
 
 
+/*
 #include <iostream>
 using namespace std;
 
@@ -1098,5 +1099,25 @@ int main()
 	//point1 = &sum;
 	int *count = &P::c;
 	std::cout << *count << endl;
+	return 0;
+}
+*/
+
+#include <stdio.h>
+char * Getmemory(void)
+{
+	char p[] = "hello world!";  return p;
+}
+void test()
+{
+	char *str = NULL;  
+	str = Getmemory();  
+	printf("%s", &str);
+	printf("\n124");
+}
+
+int  main()
+{
+	test();
 	return 0;
 }
