@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+
+// AC 100%
+
 int main()
 {
 	int n;
