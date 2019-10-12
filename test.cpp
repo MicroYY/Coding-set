@@ -936,167 +936,170 @@ int main()
 		*/
 
 
-/*
+		/*
 
-#include <vector>
-#include <string>
-#include <algorithm>
-using namespace std;
+		#include <vector>
+		#include <string>
+		#include <algorithm>
+		using namespace std;
 
-int longestValidParentheses(string s) {
-	/*
-	int n = s.length();
-	if(n <= 1) {
-		return 0;
-	}
-
-	vector<int> dp(n + 1, 0);
-	for(int i = 0; i < n - 1; i++) {
-		if(s[i] == '(') {
-			if(s[i + 1] == ')') {
-				dp[i + 1] = dp[i] + 2;
-				dp[i + 2] = dp[i] + 2;
-				i++;
+		int longestValidParentheses(string s) {
+			/*
+			int n = s.length();
+			if(n <= 1) {
+				return 0;
 			}
-			else {
-				dp[i + 1] = 0;
-			}
-		}
-		else {
-			dp[i + 1] = 0;
-		}
-	}
-	int ret = dp[0];
-	for(int i = 1; i < dp.size(); i++) {
-		ret = max(ret, dp[i]);
-	}
-	return ret;
-	
 
-	int n = s.length();
-	if (n <= 1) {
-		return 0;
-	}
-	vector<int> dp(n + 1, 0);
-	for (int i = 1; i < n; i++) {
-		if (s[i] == '(') {
-			dp[i + 1] = 0;
-		}
-		else {
-			for (int j = i - 1; j >= 0; j--) {
-				if (dp[j + 1] == 0) {
-					if (s[j] != '(') {
-						break;
+			vector<int> dp(n + 1, 0);
+			for(int i = 0; i < n - 1; i++) {
+				if(s[i] == '(') {
+					if(s[i + 1] == ')') {
+						dp[i + 1] = dp[i] + 2;
+						dp[i + 2] = dp[i] + 2;
+						i++;
 					}
-					dp[j + 1] = 1;
-					dp[i + 1] = 1;
-					break;
+					else {
+						dp[i + 1] = 0;
+					}
 				}
 				else {
-					
+					dp[i + 1] = 0;
 				}
 			}
-		}
-	}
+			int ret = dp[0];
+			for(int i = 1; i < dp.size(); i++) {
+				ret = max(ret, dp[i]);
+			}
+			return ret;
 
-	int ret = 0;
-	int tmp = 0;
-	for (int i = 0; i < dp.size(); i++) {
-		if (dp[i] == 1) {
-			tmp++;
-			ret = max(ret, tmp);
+
+			int n = s.length();
+			if (n <= 1) {
+				return 0;
+			}
+			vector<int> dp(n + 1, 0);
+			for (int i = 1; i < n; i++) {
+				if (s[i] == '(') {
+					dp[i + 1] = 0;
+				}
+				else {
+					for (int j = i - 1; j >= 0; j--) {
+						if (dp[j + 1] == 0) {
+							if (s[j] != '(') {
+								break;
+							}
+							dp[j + 1] = 1;
+							dp[i + 1] = 1;
+							break;
+						}
+						else {
+
+						}
+					}
+				}
+			}
+
+			int ret = 0;
+			int tmp = 0;
+			for (int i = 0; i < dp.size(); i++) {
+				if (dp[i] == 1) {
+					tmp++;
+					ret = max(ret, tmp);
+				}
+				else {
+					//ret = max(ret, tmp);
+					tmp = 0;
+				}
+			}
+			return ret;
 		}
-		else {
-			//ret = max(ret, tmp);
-			tmp = 0;
+
+		int main()
+		{
+			string s(")()())");
+			auto i = longestValidParentheses(s);
+			return 0;
 		}
-	}
-	return ret;
+		*/
+
+
+		/*
+		#include <iostream>
+
+		using namespace std;
+
+		class A
+		{
+		public:
+			virtual void fun()
+			{
+				cout << "A::fun()" << endl;
+			}
+			virtual ~A()
+			{
+				cout << "~A" << endl;
+			}
+
+		};
+
+		class B :public A
+		{
+		public:
+			void fun()
+			{
+				cout << "B:Fun()" << endl;
+			}
+			~B()
+			{
+				cout << "~B" << endl;
+			}
+		};
+
+		void main()
+		{
+			A* a = new B;
+			a->fun();
+			delete a;
+			return ;
+		}*/
+
+
+//#include <iostream>
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//#include <vector>
+//#include <algorithm>
+//#include <iostream>
+//std::vector<std::pair<int, int>> a;
+//
+//int main()
+//{
+//	int n = 10, x;
+//	for (int i = 1; i <= n; ++i)
+//	{
+//		a.push_back(std::make_pair(n - 1, i));
+//	}
+//	std::sort(a.begin(), a.end());
+//	std::cout << a[3].second;
+//	return 0;
+//}
+
+#include<stdio.h>
+
+int a(int tab)
+{
+	int n = tab - 1;
+	n |= n >> 1;
+	n |= n >> 2;
+	n |= n >> 4;
+	n |= n >> 8;
+	n |= n >> 16;
+	return n;
 }
 
 int main()
 {
-	string s(")()())");
-	auto i = longestValidParentheses(s);
-	return 0;
-}
-*/
-
-
-/*
-#include <iostream>
-
-using namespace std;
-
-class A
-{
-public:
-	virtual void fun()
-	{
-		cout << "A::fun()" << endl;
-	}
-	virtual ~A()
-	{
-		cout << "~A" << endl;
-	}
-
-};
-
-class B :public A
-{
-public:
-	void fun()
-	{
-		cout << "B:Fun()" << endl;
-	}
-	~B()
-	{
-		cout << "~B" << endl;
-	}
-};
-
-void main()
-{
-	A* a = new B;
-	a->fun();
-	delete a;
-	return ;
-}*/
-
-
-#include <iostream>
-using namespace std;
-
-class P
-{
-public:
-	P()
-	{}
-	static int c;
-};
-
-int sum()
-{
-	int sum = 0;
-	int* const point1 = &sum;
-	for (size_t i = 0; i < 10; i++)
-	{
-		sum += i;
-	}
-	return *point1;
-}
-
-int P::c = 0;
-int main()
-{
-	auto ret = sum();
-
-	int i = 1;
-	for (i; i < 10; i++) {}
-	int sum;
-	int* const point1 = &sum;
-	//point1 = &sum;
-	int *count = &P::c;
-	std::cout << *count << endl;
+	int n = a(666);
 	return 0;
 }
