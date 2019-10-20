@@ -1103,21 +1103,22 @@ int main()
 }
 */
 
-#include <stdio.h>
-char * Getmemory(void)
-{
-	char p[] = "hello world!";  return p;
-}
-void test()
-{
-	char *str = NULL;  
-	str = Getmemory();  
-	printf("%s", &str);
-	printf("\n124");
-}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
-int  main()
+class A
 {
-	test();
+public:
+	int i;
+	char a,b,c;
+};
+
+int main()
+{
+	std::cout << sizeof(char*) << std::endl;
+	std::cout << sizeof(int*) << std::endl;
+	std::cout << sizeof(A) << std::endl;
 	return 0;
 }
